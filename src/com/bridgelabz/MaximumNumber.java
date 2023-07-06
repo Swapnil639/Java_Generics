@@ -1,33 +1,18 @@
 package com.bridgelabz;
 
-class Generic<T extends Comparable>{
-    T x;
-    T y;
-    T z;
-
-    public Generic(T x, T y, T z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-    public T testCase() {
-        T max = x;
-        if (y.compareTo(max) > 0 && y.compareTo(z) > 0) {
-            max = y;
-        } else if (z.compareTo(max) > 0 && z.compareTo(y) > 0) {
-            max = z;
-        }
-        return max;
-    }
-}
+import java.util.Arrays;
 
 public class MaximumNumber {
+    public static <T> T testCase(T... a) {
+        Arrays.sort(a);
+        return a[a.length - 1];
+    }
+
     public static void main(String[] args) {
-        Generic<Integer> generics1=new Generic<>(900, 5000, 10);
-        Generic<Float> generics2=new Generic<>(9.8f, 5.7f, 101.7f);
-        Generic<String> generics3=new Generic<>("Swapnil", "Shubham", "Kunal");
-        System.out.println("Maximum among three integer values is :" + generics1.testCase());
-        System.out.println("Maximum among three float values is :" + generics2.testCase());
-        System.out.println("Maximum among three string values is :" + generics3.testCase());
+        System.out.println("Maximum among all integer values is :" + testCase(2, 9, 98, -2, 8, 7, 987, 765));
+        System.out.println("Maximum among all float values is :" + testCase(3.9f, 89.8f, 876.6f, 876.6f, 999.8f, 5.7f, 4.5f));
+        System.out.println("Maximum among all string values is :" + testCase("Swapnil", "Shubham", "Kunal", "Shivaji", "Mangal", "Sheetal"));
+
+
     }
 }
